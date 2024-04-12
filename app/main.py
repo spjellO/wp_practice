@@ -11,9 +11,9 @@ def read_root():
     return {"Hello": "World"}
 
 
-'''@app.get("/items/{item_id}")
+@app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}'''
+    return {"item_id": item_id, "q": q}
 
 @app.post("/name/{name}")
 def insert(name: str):
@@ -23,6 +23,6 @@ def insert(name: str):
 @app.get("/namelist/{name}")
 def select(name: str):
     if item == name:
-        return {"message" : "name that you've saved is" + name}
+        return {"message" : "name you've saved is" + name}
     else :
         return {"message" : "name cannot be found"}
