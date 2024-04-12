@@ -4,25 +4,39 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-global item
+# name = ""
+
+class item():
+    name = ""
 
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
 
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+@app.get("/name/{name}")
+def select_name(name: item):
+    if name is item.name:
+        return { "name": name }
+    else:
+        return { "name": "name cannot be found"}
 
 @app.post("/name/{name}")
-def insert(name: str):
-    item = name
-    return {"message": f"your name {item} has been saved"}
+def write_name(name: item):
+    item.name = name
+    return { "name": "your name saved"}
 
-@app.get("/namelist/{name}")
-def select(name: str):
-    if item == name:
-        return {"message" : "name you've saved is" + name}
-    else :
-        return {"message" : "name cannot be found"}
+@app.put("/name/{name}")
+def update_name(name: item):
+    if name is item.name:
+        item.name = name
+    else:
+        return { "name": "name cannot be found"}
+
+@app.delete("/name/{name}")
+def delete_name(name: item):
+    if name is item.name:
+        item.name = ""
+        return { "name": "your name deleted"}
+    else:
+        return { "name": "name cannot be found"}
+    
