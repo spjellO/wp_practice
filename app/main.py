@@ -27,6 +27,7 @@ def write_name(name: item):
 def update_name(name: item):
     if name is item.name:
         item.name = name
+        return { "name": "name updated successfully"}
     else:
         return { "name": "name cannot be found"}
 
