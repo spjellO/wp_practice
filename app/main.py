@@ -11,14 +11,14 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.get("/items/{item_id}")
+'''@app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+    return {"item_id": item_id, "q": q}'''
 
 @app.post("/name/{name}")
 def insert(name: str):
     item = name
-    return {"message": "your name has been saved"}
+    return {"message": f"your name {item} has been saved"}
 
 @app.get("/namelist/{name}")
 def select(name: str):
