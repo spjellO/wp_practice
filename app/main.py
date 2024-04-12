@@ -13,14 +13,14 @@ def read_root():
 @app.get("/name/{name}")
 def select_name(name: str):
     if name == item:
-        return { "name": name }
+        return { "name": item }
     else:
-        return { "name": "name cannot be found"}
+        return { "name": f" {name} name cannot be found"}
 
 @app.post("/name/{name}")
 def write_name(name: str):
     item = name
-    return { "name": "your name saved"}
+    return { "name": f"your name {name} saved"}
 
 @app.put("/name/{name}")
 def update_name(name: str):
