@@ -10,7 +10,7 @@ item = ""
 def read_root():
     return {"Hello": "World"}
 
-@app.get("/name/{i}")
+@app.get("/name/{name}")
 def select_name(name: str):
     if name == item:
         return { "name": name }
