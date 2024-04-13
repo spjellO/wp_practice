@@ -1,28 +1,27 @@
 from typing import Union
-
 from fastapi import FastAPI
 
 app = FastAPI()
 
-item = ""
+item = None
 
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
 
-@app.get("/name/{name}")
+@app.get("/name/")
 def select_name(name: str):
     if name == item:
         return { "name": item }
     else:
         return { "name": f" {name} name cannot be found"}
 
-@app.post("/name/{name}")
+@app.post("/name/")
 def write_name(name: str):
     item = name
     return { "name": f"your name {name} saved"}
 
-@app.put("/name/{name}")
+@app.put("/name/")
 def update_name(name: str):
     if name == item:
         item = name
@@ -30,7 +29,7 @@ def update_name(name: str):
     else:
         return { "name": "name cannot be found"}
 
-@app.delete("/name_del/{name}")
+@app.delete("/name/")
 def delete_name(name: str):
     if name == item:
         item = ""
