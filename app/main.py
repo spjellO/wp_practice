@@ -12,7 +12,6 @@ def read_root():
 @app.get("/name/")
 def select_name(name: str):
     global item
-    item = name
     if name == item:
         return { "name": item }
     else:
