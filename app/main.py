@@ -1,40 +1,44 @@
 from typing import Union
-
 from fastapi import FastAPI
 
 app = FastAPI()
 
-item = ""
+item = None
 
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
 
-@app.get("/name/{name}")
+@app.get("/name/")
 def select_name(name: str):
+    global item
+    item = name
     if name == item:
         return { "name": item }
     else:
         return { "name": f" {name} name cannot be found"}
 
-@app.post("/name/{name}")
-def write_name(name: str):
-    item = name
-    return { "name": f"your name {name} saved"}
+@app.post("/name/")
+def write_name(new_name: str):
+    global item
+    item = new_name
+    return { "name": f"your name {new_name} saved"}
 
-@app.put("/name/{name}")
-def update_name(name: str):
-    if name == item:
-        item = name
-        return { "name": "name updated successfully"}
+@app.put("/name/")
+def update_name(updated_name: str):
+    global item
+    if item:
+        item = updated_name
+        return { "name": f"name updated into {updated_name} successfully"}
     else:
         return { "name": "name cannot be found"}
 
-@app.delete("/name_del/{name}")
+@app.delete("/name/")
 def delete_name(name: str):
-    if name == item:
-        item = ""
-        return { "name": "your name deleted"}
+    global item
+    if item:
+        item = None
+        return { "name": "your name deleted successfully"}
     else:
         return { "name": "name cannot be found"}
     
