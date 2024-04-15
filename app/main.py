@@ -30,7 +30,7 @@ def update_name(updated_name: str):
         item = updated_name
         return { "name": f"name updated into {updated_name} successfully"}
     else:
-        return { "name": "name cannot be found"}
+        return { "name": "name to update do not exist"}
 
 @app.delete("/name/")
 def delete_name(name: str):
