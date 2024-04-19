@@ -6,10 +6,6 @@ app = FastAPI()
 item = None
 
 @app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-@app.get("/name/")
 def select_name(name: str):
     global item
     if name == item:
@@ -17,13 +13,13 @@ def select_name(name: str):
     else:
         return { "name": f" {name} name cannot be found"}
 
-@app.post("/name/")
+@app.post("/")
 def write_name(new_name: str):
     global item
     item = new_name
     return { "name": f"your name {new_name} saved"}
 
-@app.put("/name/")
+@app.put("/")
 def update_name(updated_name: str):
     global item
     if item:
@@ -32,7 +28,7 @@ def update_name(updated_name: str):
     else:
         return { "name": "name to update do not exist"}
 
-@app.delete("/name/")
+@app.delete("/")
 def delete_name(name: str):
     global item
     if item:
