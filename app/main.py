@@ -7,8 +7,7 @@ app = FastAPI()
 item = None
 
 @app.get("/")
-def root():
-    key = 'duqNoXzM431om35edqH7Qhcrd9M3uYYFm00ZV94K'
+def root(key: str):
     URL = f"https://bigdata.kepco.co.kr/openapi/v1/powerUsage/contractType.do?year=2020&month=11&metroCd=11&cityCd=110&cntrCd=100&apiKey={key}&returnType=json"
 
     contents = requests.get(URL).text
