@@ -8,7 +8,7 @@ item = None
 
 @app.get("/")
 def root(key: str):
-    URL = f"https://bigdata.kepco.co.kr/openapi/v1/powerUsage/contractType.do?&apiKey={key}&returnType=json"
+    URL = f"https://bigdata.kepco.co.kr/openapi/v1/powerUsage/contractType.do?metroCd=11&cityCd=110&apiKey={key}&returnType=json"
 
     contents = requests.get(URL).text
 
