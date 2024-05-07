@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 from pydantic import BaseModel
 
 # sql library initializing code
-SQLALCHEMY_DATABLSE_URL = "sqlite:///../todo.db" # app 디렉토리 바깥에 파일db 생성
+SQLALCHEMY_DATABLSE_URL = "sqlite:///./todo.db" # app 디렉토리 바깥에 파일db 생성
 engine = create_engine(SQLALCHEMY_DATABLSE_URL, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
